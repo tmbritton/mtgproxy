@@ -1,5 +1,6 @@
 $icon-font-path: "/bower_components/sass-bootstrap/fonts/";
-
+@import "compass/css3/transition";
+@import "compass/utilities/general/clearfix";
 @import 'sass-bootstrap/lib/bootstrap';
 
 .browsehappy {
@@ -43,29 +44,56 @@ body {
     border-top: 1px solid #e5e5e5;
 }
 
-.container-narrow > hr {
-    margin: 30px 0;
+img {
+    max-width: 100%;
 }
 
-/* Main marketing message and sign up button */
-.jumbotron {
-    text-align: center;
-    border-bottom: 1px solid #e5e5e5;
+#print {
+    @include clearfix;
 }
 
-.jumbotron .btn {
-    font-size: 21px;
-    padding: 14px 24px;
+.card-wrap {
+    display: block;
+    max-width: 150px;
+    position: relative;
+    float: left;
+    a {
+        color: #444;
+        position: absolute;
+        opacity: 0;
+        @include transition(all 0.4s ease-in-out);
+        &.add {
+            top: 20px;
+            left: 20px;
+        }
+        &.subtract {
+            top: 20px;
+            right: 20px;
+        }
+        &:hover {
+            color: #000;
+        }
+    }
+    i {
+        font-size: 24px;
+    }
+    img {
+        @include transition(opacity 0.4s ease-in-out);
+    }
+    &:hover {
+        img {
+            opacity: .5;
+        }
+        a {
+            opacity: 1;
+        }
+    }
+    figcaption {
+        display: block;
+        text-align: center;
+    }
 }
 
-/* Supporting marketing content */
-.marketing {
-    margin: 40px 0;
-}
-
-.marketing p + h4 {
-    margin-top: 28px;
-}
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {

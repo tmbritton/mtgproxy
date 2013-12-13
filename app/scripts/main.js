@@ -6,12 +6,28 @@
 
 
       //Methods
+      addCard: function(id) {
+        var url = 'http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=' + id + '&type=card';
+        var div = '<figure class="card-wrap">';
+        var img = '<img src="' + url + '" data-id="' + id + '">';
+        var spans = '<a class="add" href="" title="Add"><i class="fa fa-plus-circle"></i></a><a class="subtract" href="" title="Subtract"><i class="fa fa-minus-circle"></i></a>';
+        var closing = '</figure>';
+        $('#print').append(div + img + spans + closing);
+      },
       addListeners: function(){
         $('#number').focus(function(){
           proxy.clearInput(this);
         });
-        $('#submit').click(function(){
+        $('#card_input').submit(function(){
           proxy.submitCallback();
+          return false;
+        });
+        $('#print').on('click', '.add', function() {
+          proxy.duplicateCard(this);
+          return false;
+        });
+        $('#print').on('click', '.subtract', function() {
+          proxy.deleteCard(this);
           return false;
         });
       },
@@ -20,18 +36,25 @@
           $(input).val('');
         }
       },
+      deleteCard: function(element){
+        $(element).parent().remove();
+      },
+      duplicateCard: function(element){
+        $(element).parent().clone().appendTo('#print');
+      },      
       init: function(){
         proxy.addListeners()
       },
       submitCallback: function(){
-        //console.log($('#number').val());
         var string = $('#number').val();
         var ids = string.split(',');
-        console.log(ids);
         ids.forEach(function(index){
-          console.log(this);
+          index = $.trim(index);
+          proxy.addCard(index);
         });
+        $('#number').val('');
       },
+
     };
     //Kick it off
     proxy.init();
@@ -39,7 +62,7 @@
 })( jQuery );
 
 (function( $ ) {
-  $(window).load(function(){
+  $(document).ready(function(){
     $().mtgproxy();
   });
 })( jQuery );
