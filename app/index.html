@@ -11,8 +11,11 @@
         <meta name="viewport" content="width=device-width">
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
         <!-- build:css(.tmp) styles/main.css -->
-        <link rel="stylesheet" href="styles/main.css">
-        <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css">
+        <link rel="stylesheet" media="screen" href="styles/main.css">
+        <link rel="stylesheet" media="screen" href="bower_components/font-awesome/css/font-awesome.css">
+        <!-- endbuild -->
+        <!-- build:css(.tmp) styles/print.css -->
+        <link rel="stylesheet" media="print" href="styles/print.css">
         <!-- endbuild -->
         <!-- build:js scripts/vendor/modernizr.js -->
         <script src="bower_components/modernizr/modernizr.js"></script>
@@ -25,14 +28,15 @@
 
 
         <div class="container">
-            <h1><img src="images/logo.png" alt="Magic: The Gathering Proxy Generator"></h1>
+            <div id="header">
+                <h1><img src="images/logo.png" alt="Magic: The Gathering Proxy Generator"></h1>
 
-            <form id="card_input" method="GET" action="/">
-                <label for="number">Enter a card id number from the <a href="http://gatherer.wizards.com/Pages/Default.aspx">Gatherer database</a>.</label>
-                <input type="text" name="number" id="number" value="Enter ID Number">
-                <input type="submit" value="Add Card" id="submit">
-            </form>
-
+                <form id="card_input" method="GET" action="/">
+                    <label for="number">Enter a card id number from the <a href="http://gatherer.wizards.com/Pages/Default.aspx">Gatherer database</a>.</label>
+                    <input type="text" name="number" id="number" value="Enter ID Number">
+                    <input type="submit" value="Add Card" id="submit">
+                </form>
+            </div><!--header-->
             <div id="print"></div><!--print-->
 
             <div class="footer">
