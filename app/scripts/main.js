@@ -30,6 +30,10 @@
           proxy.deleteCard(this);
           return false;
         });
+        $('body').on('click', '#print-button', function() {
+          window.print();
+          return false;
+        });
       },
       clearInput: function(input){
         if($(input).val() === 'Enter ID Number'){
@@ -38,6 +42,9 @@
       },
       deleteCard: function(element){
         $(element).parent().remove();
+        if($('.card-wrap').length === 0) {
+          $('#print-button').css('display', 'none');
+        }
       },
       duplicateCard: function(element){
         $(element).parent().clone().appendTo('#print');
@@ -48,6 +55,9 @@
       submitCallback: function(){
         var string = $('#number').val();
         var ids = string.split(',');
+        if($('#print-button').css('display') === 'none') {
+          $('#print-button').css('display', 'block');
+        }  
         ids.forEach(function(index){
           index = $.trim(index);
           proxy.addCard(index);

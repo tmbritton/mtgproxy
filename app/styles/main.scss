@@ -42,6 +42,7 @@ body {
     padding-top: 19px;
     color: #777;
     border-top: 1px solid #e5e5e5;
+    text-align: center;
 }
 
 img {
@@ -52,11 +53,29 @@ img {
     @include clearfix;
 }
 
+h1 {
+    img {
+        display: block;
+        margin: 0 auto 20px auto;
+    }
+}
+
+#header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#card_input {
+    margin-bottom: 20px;
+}
+
 .card-wrap {
     display: block;
     max-width: 150px;
     position: relative;
     float: left;
+    margin: 0 25px 25px 0;
+    min-height: 208px;
     a {
         color: #444;
         position: absolute;
@@ -94,6 +113,10 @@ img {
     }
 }
 
+#print-button {
+    display: none;
+    margin: 0 auto 20px auto;
+}
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
