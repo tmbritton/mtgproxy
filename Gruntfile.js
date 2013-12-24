@@ -15,6 +15,11 @@ module.exports = function (grunt) {
 
     grunt.initConfig({
         // configurable paths
+        bower: {
+            install: {
+                //just run 'grunt bower:install' and you'll see files from your Bower packages in lib directory
+            }
+        },
         yeoman: {
             app: 'app',
             dist: 'dist'
@@ -257,7 +262,8 @@ module.exports = function (grunt) {
                         '.htaccess',
                         'images/{,*/}*.{webp,gif}',
                         'styles/fonts/{,*/}*.*',
-                        'bower_components/sass-bootstrap/fonts/*.*'
+                        'bower_components/sass-bootstrap/fonts/*.*',
+                        'bower_components/font-awesome/fonts/*.*'
                     ]
                 }]
             },
@@ -343,4 +349,5 @@ module.exports = function (grunt) {
         'test',
         'build'
     ]);
+    grunt.loadNpmTasks('grunt-bower-task');
 };
